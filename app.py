@@ -33,7 +33,6 @@ def dashboard():
     user = users[0]  # Assuming the first user in the list is logged in
     return render_template('dashboard.html', user=user)
 
-
 @app.route('/modify-account', methods=['GET', 'POST'])
 def modify_account():
     # Assuming user is logged in and modifying their own account
@@ -50,8 +49,31 @@ def modify_account():
 
     return render_template('modify_account.html', user=user)
 
+@app.route('/deposit', methods=['GET', 'POST'])
+def deposit():
+    if request.method == 'POST':
+        amount = float(request.form['amount'])
+        # Update balance in the mock database
+        user = users[0]  # Assuming the first user in the list is logged in
+        user['balance'] += amount
+        return redirect(url_for('dashboard'))
+    
+    return render_template('deposit.html')
 
-    return render_template('modify_account.html', user=user)
+@app.route('/withdraw', methods=['GET', 'POST'])
+def withdraw():
+    if request.method == 'POST':
+        amount = float(request.form['amount'])
+        # Update balance in the mock database
+        user = users[0]  # Assuming the first user in the list is logged in
+        if user['balance'] >= amount:
+            user['balance'] -= amount
+            return redirect(url_for('dashboard'))
+        else:
+            return "Insufficient balance"
+    
+    return render_template('withdraw.html')
+
 @app.route('/logout')
 def logout():
     # Clear session or any other logout logic
