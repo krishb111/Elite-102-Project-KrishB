@@ -2,7 +2,7 @@
 <html lang="en" style="
 
 font-size: large;
-color:navajowhite;
+color:black;
 background:lightblue;
 font-family: cursive;
 ">
@@ -20,9 +20,15 @@ font-family: cursive;
             <input type="text" id="name" name="name" value="{{ user.name }}" required>
             <label for="newPin">New PIN</label>
             <input type="password" id="newPin" name="newPin" required>
-            <button type="submit">Save Changes</button>
+            <button type="submit" style="
+            background: tan;
+            color: red;
+        ">Save Changes</button>
         </form>
-        <a href="/dashboard">Back to Dashboard</a>
+        <a href="/dashboard" style="
+        background: tan;
+        color: red;
+    ">Back to Dashboard</a>
     </div>
 </body>
 </html>
