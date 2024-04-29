@@ -2,11 +2,11 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-# Preset username and password
+# example username and password
 preset_username = "Krish B"
 preset_password = "123456"
 
-# Mock database for demonstration
+#  database example as database file cannot be seen in github
 users = [
     {'account_number': '123456', 'pin': '123456', 'name': 'Krish B', 'balance': 1000},
 ]
@@ -28,20 +28,19 @@ def login():
 
 @app.route('/dashboard')
 def dashboard():
-    # You can pass user data to the dashboard template
+    # Give data to dashboard to update
     # For demonstration purposes, let's assume the user is logged in
     user = users[0]  # Assuming the first user in the list is logged in
     return render_template('dashboard.html', user=user)
 
 @app.route('/modify-account', methods=['GET', 'POST'])
 def modify_account():
-    # Assuming user is logged in and modifying their own account
-    user = users[0]  # Assuming the first user in the list is logged in
+    user = users[0]  
 
     if request.method == 'POST':
         new_name = request.form['name']
         new_pin = request.form['newPin']
-        # Update user data in the mock database
+        # Update user data - change password
         user['name'] = new_name
         user['pin'] = new_pin
         # Redirect to dashboard after saving changes
@@ -53,8 +52,8 @@ def modify_account():
 def deposit():
     if request.method == 'POST':
         amount = float(request.form['amount'])
-        # Update balance in the mock database
-        user = users[0]  # Assuming the first user in the list is logged in
+        # Update balance - add money
+        user = users[0]  #
         user['balance'] += amount
         return redirect(url_for('dashboard'))
     
@@ -64,8 +63,8 @@ def deposit():
 def withdraw():
     if request.method == 'POST':
         amount = float(request.form['amount'])
-        # Update balance in the mock database
-        user = users[0]  # Assuming the first user in the list is logged in
+        # Update balance - subtract money
+        user = users[0]  
         if user['balance'] >= amount:
             user['balance'] -= amount
             return redirect(url_for('dashboard'))
@@ -76,7 +75,7 @@ def withdraw():
 
 @app.route('/logout')
 def logout():
-    # Clear session or any other logout logic
+    # logout logic
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
