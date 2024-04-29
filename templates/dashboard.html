@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,10 +8,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to Your Dashboard</h1>
-        <p>Hello, {{ user_name }}!</p>
-        <p>Your Account Number: {{ account_number }}</p>
-        <p>Your Balance: ${{ balance }}</p>
+        <h2>Welcome, {{ user.name }}</h2>
+        <p>Account Number: {{ user.account_number }}</p>
+        <p>Balance: ${{ user.balance }}</p>
+        <a href="/modify-account">Modify Account</a>
         <a href="/logout">Logout</a>
     </div>
 </body>
