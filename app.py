@@ -33,6 +33,7 @@ def dashboard():
     user = users[0]  # Assuming the first user in the list is logged in
     return render_template('dashboard.html', user=user)
 
+
 @app.route('/modify-account', methods=['GET', 'POST'])
 def modify_account():
     # Assuming user is logged in and modifying their own account
@@ -44,10 +45,13 @@ def modify_account():
         # Update user data in the mock database
         user['name'] = new_name
         user['pin'] = new_pin
+        # Redirect to dashboard after saving changes
         return redirect(url_for('dashboard'))
 
     return render_template('modify_account.html', user=user)
 
+
+    return render_template('modify_account.html', user=user)
 @app.route('/logout')
 def logout():
     # Clear session or any other logout logic
