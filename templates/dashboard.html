@@ -2,7 +2,7 @@
 <html lang="en" style="
 
 font-size: large;
-color:navajowhite;
+color:black;
 background:lightblue;
 font-family: cursive;
 ">
@@ -17,10 +17,22 @@ font-family: cursive;
         <h2>Welcome, {{ user.name }}</h2>
         <p>Account Number: {{ user.account_number }}</p>
         <p>Balance: ${{ user.balance }}</p>
-        <a href="/modify-account">Modify Account</a>
-        <a href="/deposit">Deposit</a>
-        <a href="/withdraw">Withdraw</a>
-        <a href="/logout">Logout</a>
+        <a href="/modify-account" style="
+        background: tan;
+        color: red;
+    ">Modify Account</a>
+        <a href="/deposit" style="
+        background: tan;
+        color: red;
+    ">Deposit</a>
+        <a href="/withdraw" style="
+        background: tan;
+        color: red;
+    ">Withdraw</a>
+        <a href="/logout" style="
+        background: tan;
+        color: red;
+    ">Logout</a>
     </div>
 </body>
 </html>
