@@ -8,8 +8,7 @@ preset_password = "123456"
 
 # Mock database for demonstration
 users = [
-    {'account_number': '123456', 'pin': '1234', 'name': 'John Doe', 'balance': 1000},
-    {'account_number': '987654', 'pin': '4321', 'name': 'Jane Smith', 'balance': 500},
+    {'account_number': '123456', 'pin': '123456', 'name': 'Krish B', 'balance': 1000},
 ]
 
 @app.route('/')
@@ -33,6 +32,26 @@ def dashboard():
     # For demonstration purposes, let's assume the user is logged in
     user = users[0]  # Assuming the first user in the list is logged in
     return render_template('dashboard.html', user=user)
+
+@app.route('/modify-account', methods=['GET', 'POST'])
+def modify_account():
+    # Assuming user is logged in and modifying their own account
+    user = users[0]  # Assuming the first user in the list is logged in
+
+    if request.method == 'POST':
+        new_name = request.form['name']
+        new_pin = request.form['newPin']
+        # Update user data in the mock database
+        user['name'] = new_name
+        user['pin'] = new_pin
+        return redirect(url_for('dashboard'))
+
+    return render_template('modify_account.html', user=user)
+
+@app.route('/logout')
+def logout():
+    # Clear session or any other logout logic
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
