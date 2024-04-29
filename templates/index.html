@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form action="/login" method="post">
+            <input type="text" name="account_number" placeholder="Account Number" required>
+            <input type="password" name="pin" placeholder="PIN" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="/create_account">Create one</a></p>
+    </div>
+</body>
+</html>
